@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Exposure Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>Predictive Cyber Exposure Dashboard</h1>
+
+<div class="card">
+    <h3>Asset</h3>
+    <p>{{ asset }}</p>
+</div>
+
+<div class="card">
+    <h3>Predicted Attack</h3>
+    <p>{{ attack }}</p>
+</div>
+
+<div class="card" style="border-left:6px solid {{ color }}">
+    <h3>Risk Score</h3>
+    <p>{{ score }} / 100</p>
+    <strong>{{ level }} RISK</strong>
+</div>
+
+<div class="card">
+    <h3>Explanation</h3>
+    <p>{{ explanation }}</p>
+</div>
+
+</body>
+</html>
