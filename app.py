@@ -1,35 +1,39 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import random
 
 app = Flask(__name__)
 
 @app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/analyze", methods=["POST"])
 def dashboard():
-    asset = "Web Application"
+    asset = request.form.get("asset")
+    exposure = request.form.get("exposure")
+    impact = request.form.get("impact")
 
     attacks = ["SQL Injection", "XSS", "Brute Force"]
     attack = random.choice(attacks)
 
-    risk_score = random.randint(60, 90)
+    score = 40
+    if exposure == "High":
+        score += 25
+    if impact == "High":
+        score += 25
 
-    if risk_score >= 75:
-        risk_level = "High"
-        color = "red"
-    elif risk_score >= 50:
-        risk_level = "Medium"
-        color = "orange"
-    else:
-        risk_level = "Low"
-        color = "green"
+    risk_score = min(score, 95)
 
-    explanation = (
-        "Exposure patterns detected based on simulated telemetry "
-        "and asset criticality, indicating elevated attack likelihood."
-    )
+    risk_level = "High" if risk_score >= 75 else "Medium"
+    color = "red" if risk_score >= 75 else "orange"
+
+    explanation = "Simulated AI risk analysis based on exposure and impact."
 
     return render_template(
         "dashboard.html",
         asset=asset,
+        exposure=exposure,
+        impact=impact,
         attack=attack,
         score=risk_score,
         level=risk_level,

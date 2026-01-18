@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cyber Exposure Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Cyber Exposure Analysis</h1>
+    <p>Select the asset to analyse cyber risk</p>
+
+    <form action="/analyze" method="post">
+
+    <label>Asset Type</label>
+    <select name="asset" required>
+        <option value="Web Application">Web Application</option>
+        <option value="Server">Server</option>
+        <option value="API">API</option>
+        <option value="Cloud Infrastructure">Cloud Infrastructure</option>
+    </select>
+
+    <label>Exposure Level</label>
+    <select name="exposure" required>
+        <option value="Low">Low (Internal / Restricted)</option>
+        <option value="Medium">Medium (Partner Access)</option>
+        <option value="High">High (Public / Internet Facing)</option>
+    </select>
+
+    <label>Business Impact</label>
+    <select name="impact" required>
+        <option value="Low">Low (Minor disruption)</option>
+        <option value="Medium">Medium (Operational impact)</option>
+        <option value="High">High (Financial / Reputation loss)</option>
+    </select>
+
+    <button type="submit">Analyse Risk</button>
+</form>
+
+</div>
+
+</body>
+</html>

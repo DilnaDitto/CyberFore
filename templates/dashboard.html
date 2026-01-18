@@ -1,32 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Cyber Exposure Dashboard</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <meta charset="UTF-8">
+    <title>Risk Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<h1>Predictive Cyber Exposure Dashboard</h1>
+<div class="container">
+    <h1>Risk Analysis Result</h1>
 
-<div class="card">
-    <h3>Asset</h3>
-    <p>{{ asset }}</p>
-</div>
+    <div class="card">
+        <p><strong>Asset:</strong> {{ asset }}</p>
+        <p><strong>Predicted Attack:</strong> {{ attack }}</p>
 
-<div class="card">
-    <h3>Predicted Attack</h3>
-    <p>{{ attack }}</p>
-</div>
+        <p><strong>Exposure Level:</strong> {{ exposure }}</p>
+        <p><strong>Business Impact:</strong> {{ impact }}</p>
 
-<div class="card" style="border-left:6px solid {{ color }}">
-    <h3>Risk Score</h3>
-    <p>{{ score }} / 100</p>
-    <strong>{{ level }} RISK</strong>
-</div>
 
-<div class="card">
-    <h3>Explanation</h3>
-    <p>{{ explanation }}</p>
+        <h2 style="color: {{ color }};">Risk Score: {{ score }}</h2>
+        <p><strong>Risk Level:</strong> {{ level }}</p>
+
+        <p class="explanation">{{ explanation }}</p>
+
+        <a href="/" class="btn">Analyse Another Asset</a>
+    </div>
 </div>
 
 </body>
